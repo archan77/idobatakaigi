@@ -48,8 +48,8 @@ export default function SignIn({ setName }) {
   console.log({disabled, string});
 
   useEffect(() => {
-    string === ''
-    setDisabled(false)
+    const disabled = string === ''
+    setDisabled(disabled)
   },[string])
 
   return (
@@ -72,12 +72,16 @@ export default function SignIn({ setName }) {
             onChange={(e) => setString(e.target.value)}
           />
           <Button
-            type="submit"
+            type="button"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
             disabled={disabled}
+            onClick={() => {
+              setName(string);
+
+            }}
           >
             はじめる
           </Button>
